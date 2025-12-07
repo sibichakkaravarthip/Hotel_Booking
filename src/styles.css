@@ -1,0 +1,539 @@
+/* ============================================
+   TAILWIND-LIKE CSS - HOTEL ROOM BOOKING APP
+   ============================================ */
+
+/* ROOT VARIABLES */
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --secondary: #6b7280;
+  --danger: #ef4444;
+  --danger-dark: #dc2626;
+  --success: #10b981;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
+  --border-light: #e5e7eb;
+  --border-muted: #d1d5db;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --rounded-sm: 4px;
+  --rounded-md: 6px;
+  --rounded-lg: 8px;
+  --rounded-xl: 12px;
+  --rounded-2xl: 16px;
+  --transition: all 0.3s ease;
+}
+
+/* GLOBAL RESET & BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
+
+.rb-page {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  padding: 24px 16px;
+  display: block;
+}
+
+.rb-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+
+.rb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.rb-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.rb-meta {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ============================================
+   GRID LAYOUT
+   ============================================ */
+
+.rb-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .rb-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+}
+
+/* Room cards grid */
+.rb-rooms-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .rb-rooms-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rb-rooms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.rb-card {
+  background-color: var(--bg-white);
+  border-radius: var(--rounded-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rb-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.rb-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  background-color: #f3f4f6;
+}
+
+.rb-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.rb-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.rb-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+  flex: 1;
+}
+
+.rb-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.rb-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  margin-top: 8px;
+}
+
+.rb-meta-small {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--rounded-lg);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+  text-decoration: none;
+  outline: none;
+  white-space: nowrap;
+}
+
+.btn:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Ghost Button */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--border-muted);
+  padding: 8px 16px;
+}
+
+.btn-ghost:hover {
+  background-color: var(--bg-light);
+  border-color: var(--secondary);
+}
+
+.btn-ghost:active {
+  background-color: #f3f4f6;
+}
+
+/* Danger Button */
+.btn-danger {
+  background-color: transparent;
+  color: var(--danger);
+  border: none;
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-danger:hover {
+  color: var(--danger-dark);
+  text-decoration: underline;
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.btn-danger:active {
+  opacity: 0.8;
+}
+
+/* ============================================
+   BOOKING SIDEBAR
+   ============================================ */
+
+.rb-aside {
+  background-color: var(--bg-white);
+  border-radius: var(--rounded-2xl);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  height: fit-content;
+}
+
+.rb-aside h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+}
+
+/* ============================================
+   BOOKING LIST
+   ============================================ */
+
+.space-y-3 > * + * {
+  margin-top: 12px;
+}
+
+.rb-booking-item {
+  border: 1px solid var(--border-light);
+  border-radius: var(--rounded-lg);
+  padding: 16px;
+  background-color: var(--bg-white);
+  transition: var(--transition);
+}
+
+.rb-booking-item:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--border-muted);
+}
+
+.rb-booking-item > div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rb-booking-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.rb-booking-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* ============================================
+   MODAL STYLES
+   ============================================ */
+
+.rb-modal-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+}
+
+.rb-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+.rb-modal {
+  position: relative;
+  background-color: var(--bg-white);
+  border-radius: var(--rounded-2xl);
+  padding: 28px;
+  max-width: 500px;
+  width: 100%;
+  z-index: 10000;
+  box-shadow: var(--shadow-xl);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.rb-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.rb-modal-head h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 4px 0;
+}
+
+.rb-modal-head .text-sm {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.rb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.rb-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.rb-field input {
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--rounded-lg);
+  font-size: 14px;
+  color: var(--text-dark);
+  font-family: inherit;
+  transition: var(--transition);
+  background-color: var(--bg-white);
+}
+
+.rb-field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.rb-error {
+  font-size: 13px;
+  color: var(--danger);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ============================================
+   MODAL FOOTER
+   ============================================ */
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.rb-footer {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-sm {
+  font-size: 14px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.rounded-lg {
+  border-radius: var(--rounded-lg);
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 640px) {
+  .rb-page {
+    padding: 16px 12px;
+  }
+
+  .rb-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .rb-title {
+    font-size: 24px;
+  }
+
+  .rb-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .rb-card img {
+    height: 160px;
+  }
+
+  .rb-modal {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .rb-modal-head {
+    flex-direction: column;
+  }
+}
