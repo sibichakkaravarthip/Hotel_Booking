@@ -97,8 +97,8 @@ button a {
 }
 
 button:hover{
-    background-color: rgb(159, 203, 213);
-    color: white;
+    background-color: rgb(240, 244, 245);
+    color: rgb(8, 8, 8);
 } 
 .welcome{
     text-align: center;
@@ -150,7 +150,7 @@ section{
 .book h2{
     text-align: center;
     padding-top: 10px;
-    /* color: white; */
+    color: white;
     font-size: 24px;
     margin: 0;
 }
